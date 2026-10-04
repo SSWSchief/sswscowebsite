@@ -1,3 +1,4 @@
+import { DISPATCH } from "@/lib/site";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 
@@ -29,11 +30,11 @@ export default function NotFound() {
             Go Home
           </Link>
           <a
-            href="tel:7024600726"
+            href={DISPATCH.tel}
             className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 font-heading font-semibold uppercase tracking-wide text-sm hover:bg-white hover:text-ssws-navy transition-colors"
           >
             <Phone size={18} />
-            Call / Text Us
+            Call Now to Book
           </a>
         </div>
       </div>

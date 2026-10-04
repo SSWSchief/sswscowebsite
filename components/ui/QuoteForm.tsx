@@ -1,5 +1,6 @@
 "use client";
 
+import { DISPATCH } from "@/lib/site";
 import { useState, type FormEvent } from "react";
 import { Send, CheckCircle } from "lucide-react";
 
@@ -9,7 +10,7 @@ interface QuoteFormProps {
   className?: string;
 }
 
-const dumpsterOptions = ["20 Yard Lowboy", "40 Yard", "Not Sure"];
+const dumpsterOptions = ["20 Yard", "40 Yard", "Not Sure"];
 const projectTypes = [
   "Home Cleanout",
   "Garage Cleanout",
@@ -18,7 +19,7 @@ const projectTypes = [
   "Roofing Project",
   "Construction / Demo",
   "Commercial Cleanout",
-  "Heavy Debris (Concrete / Dirt)",
+  "General Cleanout",
   "Other",
 ];
 
@@ -48,7 +49,7 @@ export default function QuoteForm({
       if (!res.ok) throw new Error("Submission failed");
       setSubmitted(true);
     } catch {
-      setError("Something went wrong. Please call us at (702) 460-0726.");
+      setError("Something went wrong. Please try again or contact us by email.");
     } finally {
       setLoading(false);
     }
@@ -62,9 +63,9 @@ export default function QuoteForm({
           Quote Request Received!
         </h3>
         <p className="text-ssws-steel text-sm max-w-xs">
-          We&apos;ll get back to you shortly. For a faster response, call or text us at{" "}
-          <a href="tel:7024600726" className="text-ssws-blue font-semibold">
-            (702) 460-0726
+          We&apos;ll get back to you shortly. For a faster response, call dispatch at{" "}
+          <a href={DISPATCH.tel} className="text-ssws-blue font-semibold">
+            {DISPATCH.display}
           </a>.
         </p>
       </div>
@@ -97,7 +98,7 @@ export default function QuoteForm({
             name="phone"
             type="tel"
             required
-            placeholder="(702) 460-0726"
+            placeholder="(702) 555-0123"
             className="w-full border border-gray-300 px-3 py-2.5 text-sm text-ssws-charcoal placeholder-gray-400 focus:outline-none focus:border-ssws-blue focus:ring-1 focus:ring-ssws-blue"
           />
         </div>
@@ -208,9 +209,9 @@ export default function QuoteForm({
       </button>
 
       <p className="text-center text-xs text-ssws-steel">
-        or call/text us at{" "}
-        <a href="tel:7024600726" className="text-ssws-blue font-semibold hover:underline">
-          (702) 460-0726
+        or call dispatch at{" "}
+        <a href={DISPATCH.tel} className="text-ssws-blue font-semibold hover:underline">
+          {DISPATCH.display}
         </a>
       </p>
     </form>

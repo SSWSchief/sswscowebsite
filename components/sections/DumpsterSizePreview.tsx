@@ -1,28 +1,10 @@
+import { dumpsters, PRICING } from "@/lib/dumpsters";
+import { DISPATCH } from "@/lib/site";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Weight, CalendarDays, Scale } from "lucide-react";
+import { ArrowRight, Truck, CalendarDays, Scale } from "lucide-react";
 
-const dumpsters = [
-  {
-    id: "lowboy",
-    name: "20 Yard Lowboy",
-    capacity: "For heavy debris",
-    rental: "7-10 day rental included",
-    includedTons: "Included tonnage — contact us to confirm",
-    idealFor: ["Concrete & Dirt", "Asphalt & Gravel", "Rock & Fill Material", "Home Cleanouts"],
-    href: "/dumpster-sizes#lowboy",
-    featured: true,
-  },
-  {
-    id: "40-yard",
-    name: "40 Yard",
-    capacity: "Holds up to 8 tons",
-    rental: "7-10 day rental included",
-    includedTons: "6 tons included — overage billed beyond that",
-    idealFor: ["Large Construction", "Demolition", "Commercial Cleanouts", "Major Renovations"],
-    href: "/dumpster-sizes#40-yard",
-  },
-];
+
 
 export default function DumpsterSizePreview() {
   return (
@@ -33,7 +15,7 @@ export default function DumpsterSizePreview() {
             Popular Dumpster Sizes
           </h2>
           <p className="mt-3 text-ssws-steel">
-            Two container types built for the job — from heavy debris to large-scale construction.
+            Two container types built for the job — from home cleanouts to large-scale construction.
           </p>
         </div>
 
@@ -52,10 +34,10 @@ export default function DumpsterSizePreview() {
               )}
               {/* Dumpster image */}
               <div className="relative h-36 border-b border-gray-100 overflow-hidden bg-ssws-navy">
-                {d.id === "lowboy" ? (
+                {d.id === "20-yard" ? (
                   <Image
-                    src="/images/dumpster-20yard.webp"
-                    alt="Silver State Waste Solutions 20 yard lowboy dumpster"
+                    src="/images/home-renovation.png"
+                    alt="Home renovation project"
                     fill
                     className="object-cover object-center"
                   />
@@ -73,10 +55,12 @@ export default function DumpsterSizePreview() {
                 <h3 className="font-heading text-2xl font-bold text-ssws-blue uppercase">
                   {d.name}
                 </h3>
+                  <p className="text-3xl font-bold text-ssws-charcoal">${d.price}</p>
+                  <p className="text-xs text-ssws-steel">Extra days: ${d.extraDayRate}/day · Over {d.includedTons} tons: ${PRICING.overagePerTon}/ton.<br />Plus {PRICING.fuelEnvironmentalPercent}% fuel/environmental fee and sales tax.</p>
                 <div className="flex flex-col gap-1.5 text-ssws-steel text-sm">
-                  <span className="flex items-center gap-1.5"><Weight size={14} className="text-ssws-skyline" />{d.capacity}</span>
-                  <span className="flex items-center gap-1.5"><CalendarDays size={14} className="text-ssws-skyline" />{d.rental}</span>
-                  <span className="flex items-center gap-1.5"><Scale size={14} className="text-ssws-skyline" />{d.includedTons}</span>
+                  <span className="flex items-center gap-1.5"><Truck size={14} className="text-ssws-skyline" />Delivery &amp; pickup included</span>
+                  <span className="flex items-center gap-1.5"><CalendarDays size={14} className="text-ssws-skyline" />{d.rentalDays}-day rental</span>
+                  <span className="flex items-center gap-1.5"><Scale size={14} className="text-ssws-skyline" />{d.includedTons} tons included</span>
                 </div>
                 <div>
                   <p className="text-xs font-heading font-semibold text-ssws-blue uppercase tracking-wide mb-2">
@@ -106,10 +90,10 @@ export default function DumpsterSizePreview() {
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <p className="text-ssws-steel text-sm">Not sure what size you need?</p>
           <a
-            href="tel:7024600726"
+            href={DISPATCH.tel}
             className="inline-flex items-center gap-2 bg-ssws-blue text-white px-6 py-3 font-heading font-semibold uppercase tracking-wide text-sm hover:bg-ssws-navy transition-colors"
           >
-            Call / Text Us
+            Call Now to Book
           </a>
           <Link
             href="/dumpster-sizes"

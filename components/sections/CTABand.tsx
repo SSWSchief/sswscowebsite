@@ -1,3 +1,4 @@
+import { DISPATCH } from "@/lib/site";
 import Link from "next/link";
 import { Phone, FileText } from "lucide-react";
 
@@ -8,7 +9,7 @@ interface CTABandProps {
 
 export default function CTABand({
   headline = "Ready to Get Started?",
-  subline = "Call or text us today for fast, friendly service.",
+  subline = "Call dispatch today for fast, friendly service.",
 }: CTABandProps) {
   return (
     <section className="bg-ssws-navy py-12">
@@ -35,11 +36,11 @@ export default function CTABand({
               Get a Quote
             </Link>
             <a
-              href="tel:7024600726"
+              href={DISPATCH.tel}
               className="inline-flex items-center justify-center gap-2 bg-white text-ssws-navy px-8 py-3.5 font-heading font-semibold uppercase tracking-wide text-sm hover:bg-ssws-ice transition-colors"
             >
               <Phone size={16} />
-              Call (702) 460-0726
+              Call Now to Book
             </a>
           </div>
         </div>

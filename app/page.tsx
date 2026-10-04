@@ -12,7 +12,7 @@ import { localBusinessSchema } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "Dumpster Rental Las Vegas | Silver State Waste Solutions",
   description:
-    "Reliable dumpster rental in Las Vegas, North Las Vegas, and Henderson. 20 yard lowboy and 40 yard containers available. Call or text (702) 460-0726 for a fast quote.",
+    "Reliable dumpster rental in Las Vegas, North Las Vegas, and Henderson. 20 yard and 40 yard containers available. Call or text {DISPATCH.display} for a fast quote.",
 };
 
 export default function HomePage() {

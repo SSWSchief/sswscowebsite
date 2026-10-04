@@ -1,53 +1,19 @@
+import { dumpsters, PRICING } from "@/lib/dumpsters";
+import { DISPATCH } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Phone, Weight, CalendarDays, Scale } from "lucide-react";
+import { ArrowRight, Phone, Truck, CalendarDays, Scale } from "lucide-react";
 import CTABand from "@/components/sections/CTABand";
 import FAQ from "@/components/sections/FAQ";
 
 export const metadata: Metadata = {
   title: "Dumpster Sizes | Roll-Off Dumpster Rental Las Vegas",
   description:
-    "Choose from 20 yard lowboy and 40 yard dumpsters. Silver State Waste Solutions has the right size for every project in Las Vegas, NV. Call (702) 460-0726.",
+    "Choose from 20 yard dumpsters from $425 and 40 yard dumpsters from $525. Silver State Waste Solutions has the right size for every project in Las Vegas, NV. Contact dispatch to book.",
 };
 
-const dumpsters = [
-  {
-    id: "lowboy",
-    name: "20 Yard Lowboy",
-    dims: "8' W × 14' L × 2' H (low profile)",
-    capacity: "For heavy debris — concrete, dirt, asphalt",
-    rental: "7-10 day rental included",
-    includedTons: "Included tonnage — contact us to confirm",
-    idealFor: [
-      "Concrete & Dirt",
-      "Asphalt & Gravel",
-      "Rock & Fill Material",
-      "Heavy Dense Debris",
-      "Ground-Level Loading",
-      "Home Cleanouts & Renovations",
-    ],
-    featured: true,
-    note: "The lowboy's low walls make it easy to load heavy materials by hand. Overage tonnage is billed beyond the included amount.",
-  },
-  {
-    id: "40-yard",
-    name: "40 Yard",
-    dims: "8' W × 22' L × 8' H",
-    capacity: "Holds up to 8 tons",
-    rental: "7-10 day rental included",
-    includedTons: "6 tons included — overage billed beyond that",
-    idealFor: [
-      "Large Construction Projects",
-      "Demolition",
-      "Commercial Cleanouts",
-      "Major Renovations",
-      "Roofing Tear-Offs",
-      "Large-Scale Debris",
-    ],
-    notFor: "Not recommended for concrete, dirt, or heavy dense materials.",
-  },
-];
+
 
 export default function DumpsterSizesPage() {
   return (
@@ -60,7 +26,7 @@ export default function DumpsterSizesPage() {
             <span className="text-ssws-skyline">For Every Project</span>
           </h1>
           <p className="mt-4 text-ssws-ice text-lg max-w-2xl">
-            From heavy debris and construction sites to large-scale cleanouts, we have the right
+            From home cleanouts and construction sites to large-scale cleanouts, we have the right
             dumpster for your job. Two container types — built for work that doesn&apos;t stop.
           </p>
         </div>
@@ -78,6 +44,7 @@ export default function DumpsterSizesPage() {
                   d.featured ? "border-ssws-blue shadow-xl" : "border-gray-200"
                 } flex flex-col scroll-mt-24`}
               >
+                {d.id === "20-yard" && <span id="lowboy" className="scroll-mt-24" />}
                 {d.featured && (
                   <div className="bg-ssws-blue text-white text-center py-1.5 text-xs font-heading font-semibold uppercase tracking-widest">
                     Most Popular
@@ -86,10 +53,10 @@ export default function DumpsterSizesPage() {
 
                 {/* Dumpster photo */}
                 <div className="relative h-44 border-b border-gray-100 overflow-hidden bg-ssws-navy">
-                  {d.id === "lowboy" ? (
+                  {d.id === "20-yard" ? (
                     <Image
-                      src="/images/dumpster-20yard.webp"
-                      alt="Silver State Waste Solutions 20 yard lowboy dumpster"
+                      src="/images/home-renovation.png"
+                      alt="Home renovation project"
                       fill
                       className="object-cover object-center"
                     />
@@ -107,11 +74,13 @@ export default function DumpsterSizesPage() {
                   <h2 className="font-heading text-3xl font-bold text-ssws-blue uppercase">
                     {d.name}
                   </h2>
+                  <p className="text-3xl font-bold text-ssws-charcoal">${d.price}</p>
+                  <p className="text-xs text-ssws-steel">Extra days: ${d.extraDayRate}/day · Over {d.includedTons} tons: ${PRICING.overagePerTon}/ton.<br />Plus {PRICING.fuelEnvironmentalPercent}% fuel/environmental fee and sales tax.</p>
 
                   <div className="space-y-1.5 text-ssws-steel text-sm border-b border-gray-100 pb-4">
-                    <p className="flex items-center gap-1.5"><Weight size={14} className="text-ssws-skyline" />{d.capacity}</p>
-                    <p className="flex items-center gap-1.5"><CalendarDays size={14} className="text-ssws-skyline" />{d.rental}</p>
-                    <p className="flex items-center gap-1.5"><Scale size={14} className="text-ssws-skyline" />{d.includedTons}</p>
+                    <p className="flex items-center gap-1.5"><Truck size={14} className="text-ssws-skyline" />Delivery &amp; pickup included</p>
+                    <p className="flex items-center gap-1.5"><CalendarDays size={14} className="text-ssws-skyline" />{d.rentalDays}-day rental</p>
+                    <p className="flex items-center gap-1.5"><Scale size={14} className="text-ssws-skyline" />{d.includedTons} tons included</p>
                   </div>
 
                   <div>
@@ -128,9 +97,9 @@ export default function DumpsterSizesPage() {
                     </ul>
                   </div>
 
-                  {(d.notFor || d.note) && (
+                  {d.note && (
                     <p className="text-xs text-ssws-steel italic border-t border-gray-100 pt-3">
-                      {d.notFor ?? d.note}
+                      {d.note}
                     </p>
                   )}
 
@@ -162,11 +131,11 @@ export default function DumpsterSizesPage() {
             </div>
             <div className="flex gap-3 flex-wrap justify-center">
               <a
-                href="tel:7024600726"
+                href={DISPATCH.tel}
                 className="inline-flex items-center gap-2 bg-ssws-blue text-white px-6 py-3 font-heading font-semibold uppercase tracking-wide text-sm hover:bg-ssws-navy transition-colors"
               >
                 <Phone size={15} />
-                Call / Text (702) 460-0726
+                Call Now to Book
               </a>
               <Link
                 href="/contact"
@@ -182,7 +151,7 @@ export default function DumpsterSizesPage() {
       <FAQ />
       <CTABand
         headline="Ready to Get Started?"
-        subline="Fast, reliable dumpster rentals — call or text us today!"
+        subline="Fast, reliable dumpster rentals — call dispatch today!"
       />
     </>
   );

@@ -1,3 +1,4 @@
+import { DISPATCH } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,7 +10,7 @@ import TrustBar from "@/components/sections/TrustBar";
 export const metadata: Metadata = {
   title: "Residential Dumpster Rental Las Vegas | Silver State Waste Solutions",
   description:
-    "Dumpster rental for homeowners in Las Vegas, North Las Vegas, and Henderson. Home cleanouts, renovations, yard waste, and more. Call (702) 460-0726.",
+    "Dumpster rental for homeowners in Las Vegas, North Las Vegas, and Henderson. Home cleanouts, renovations, yard waste, and more. Contact dispatch to book.",
 };
 
 const services = [
@@ -52,11 +53,11 @@ export default function ResidentialPage() {
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
-                  href="tel:7024600726"
+                  href={DISPATCH.tel}
                   className="inline-flex items-center gap-2 bg-ssws-blue text-white px-8 py-4 font-heading font-semibold uppercase tracking-wide text-sm hover:bg-ssws-action transition-colors"
                 >
                   <Phone size={18} />
-                  Call / Text Us
+                  Call Now to Book
                 </a>
                 <Link
                   href="/contact"
@@ -120,7 +121,7 @@ export default function ResidentialPage() {
 
       <CTABand
         headline="Ready to Get Started?"
-        subline="Call or text us today for fast, friendly residential service."
+        subline="Call dispatch today for fast, friendly residential service."
       />
     </>
   );

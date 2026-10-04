@@ -1,5 +1,6 @@
 "use client";
 
+import { DISPATCH } from "@/lib/site";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -12,7 +13,7 @@ const navLinks = [
     label: "Dumpster Sizes",
     href: "/dumpster-sizes",
     children: [
-      { label: "20 Yard Lowboy", href: "/dumpster-sizes#lowboy" },
+      { label: "20 Yard", href: "/dumpster-sizes#20-yard" },
       { label: "40 Yard", href: "/dumpster-sizes#40-yard" },
     ],
   },
@@ -33,11 +34,11 @@ export default function Header() {
       <div className="bg-ssws-navy text-white">
         <div className="mx-auto max-w-7xl px-4 py-2 flex items-center justify-between text-sm">
           <a
-            href="tel:7024600726"
+            href={DISPATCH.tel}
             className="flex items-center gap-1.5 hover:text-ssws-ice transition-colors font-semibold whitespace-nowrap"
           >
             <Phone size={14} />
-            (702) 460-0726
+            {DISPATCH.display}
           </a>
           <span className="flex items-center gap-1.5 text-ssws-ice text-xs">
             <MapPin size={13} />
@@ -163,11 +164,11 @@ export default function Header() {
             ))}
             <div className="pt-4 flex flex-col gap-3">
               <a
-                href="tel:7024600726"
+                href={DISPATCH.tel}
                 className="flex items-center justify-center gap-2 bg-ssws-blue text-white py-3 font-heading font-semibold uppercase tracking-wide text-sm"
               >
                 <Phone size={16} />
-                Call / Text Us
+                Call Now to Book
               </a>
               <Link
                 href="/contact"

@@ -1,3 +1,5 @@
+import { DISPATCH } from "./site";
+import { dumpsters } from "./dumpsters";
 export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -6,9 +8,9 @@ export const localBusinessSchema = {
   description:
     "Reliable dumpster rental and waste solutions for homeowners, contractors, and businesses across Las Vegas, North Las Vegas, and Henderson, NV.",
   url: "https://sswsco.com",
-  telephone: "+17024600726",
+  telephone: DISPATCH.e164,
   email: "info@sswsco.com",
-  priceRange: "$$",
+  priceRange: `$${dumpsters[0].price}–$${dumpsters[1].price}`,
   image: "https://sswsco.com/images/logo.png",
   logo: "https://sswsco.com/images/logo.png",
   address: {
@@ -30,9 +32,6 @@ export const localBusinessSchema = {
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Dumpster Rental Services",
-    itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "20 Yard Lowboy Dumpster Rental" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "40 Yard Dumpster Rental" } },
-    ],
+    itemListElement: dumpsters.map((d) => ({ "@type": "Offer", price: String(d.price), priceCurrency: "USD", itemOffered: { "@type": "Service", name: `${d.name} Dumpster Rental` } })),
   },
 };

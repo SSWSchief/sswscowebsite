@@ -1,3 +1,4 @@
+import { DISPATCH } from "@/lib/site";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, FileText } from "lucide-react";
@@ -8,8 +9,8 @@ export default function HeroHome() {
     <section className="relative bg-ssws-navy overflow-hidden min-h-[580px] flex items-center">
       {/* Fleet photo background */}
       <Image
-        src="/images/trucks-on-strip.png"
-        alt="Silver State Waste Solutions fleet trucks on the Las Vegas Strip"
+        src="/images/construction-site.png"
+        alt="Construction project in the Las Vegas area"
         fill
         className="object-cover object-center opacity-40"
         priority
@@ -34,11 +35,11 @@ export default function HeroHome() {
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a
-                href="tel:7024600726"
+                href={DISPATCH.tel}
                 className="inline-flex items-center gap-2 bg-ssws-blue text-white px-8 py-4 font-heading font-semibold uppercase tracking-wide text-sm hover:bg-ssws-action transition-colors"
               >
                 <Phone size={18} />
-                Call / Text Us
+                Call Now to Book
               </a>
               <Link
                 href="/contact"

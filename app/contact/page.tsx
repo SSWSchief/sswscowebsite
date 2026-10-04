@@ -1,3 +1,5 @@
+import { dumpsters } from "@/lib/dumpsters";
+import { DISPATCH } from "@/lib/site";
 import type { Metadata } from "next";
 import { Phone, Mail, Globe, MapPin, Clock, MessageSquare, Briefcase } from "lucide-react";
 import QuoteForm from "@/components/ui/QuoteForm";
@@ -6,7 +8,7 @@ import { localBusinessSchema } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "Contact Us | Get a Dumpster Quote in Las Vegas",
   description:
-    "Contact Silver State Waste Solutions to get a fast dumpster rental quote in Las Vegas, North Las Vegas, or Henderson. Call or text (702) 460-0726.",
+    "Contact Silver State Waste Solutions to get a fast dumpster rental quote in Las Vegas, North Las Vegas, or Henderson. Contact dispatch to book.",
 };
 
 const hours = [
@@ -44,9 +46,9 @@ export default function ContactPage() {
           </h1>
           <p className="mt-4 text-ssws-ice text-lg max-w-xl">
             Fill out the form below and we&apos;ll get back to you quickly. Rather talk? Call or
-            text us at{" "}
-            <a href="tel:7024600726" className="text-white font-semibold hover:text-ssws-ice underline">
-              (702) 460-0726
+            dispatch at{" "}
+            <a href={DISPATCH.tel} className="text-white font-semibold hover:text-ssws-ice underline">
+              {DISPATCH.display}
             </a>.
           </p>
         </div>
@@ -73,13 +75,13 @@ export default function ContactPage() {
                 <ul className="space-y-4">
                   <li>
                     <a
-                      href="tel:7024600726"
+                      href={DISPATCH.tel}
                       className="flex items-start gap-3 hover:text-ssws-ice transition-colors"
                     >
                       <Phone size={18} className="flex-shrink-0 mt-0.5 text-ssws-skyline" />
                       <div>
-                        <p className="text-xs text-ssws-silver mb-0.5">Phone / Text</p>
-                        <p className="font-semibold">(702) 460-0726</p>
+                        <p className="text-xs text-ssws-silver mb-0.5">Dispatch</p>
+                        <p className="font-semibold">{DISPATCH.display}</p>
                       </div>
                     </a>
                   </li>
@@ -126,10 +128,10 @@ export default function ContactPage() {
                   Dumpster Sizes Available
                 </h3>
                 <ul className="space-y-2">
-                  {["20 Yard Lowboy", "40 Yard"].map((size) => (
-                    <li key={size} className="flex items-center gap-2 text-ssws-steel text-sm">
+                  {dumpsters.map((size) => (
+                    <li key={size.id} className="flex items-center gap-2 text-ssws-steel text-sm">
                       <span className="w-2 h-2 rounded-full bg-ssws-blue flex-shrink-0" />
-                      {size}
+                      {size.name} — ${size.price}
                     </li>
                   ))}
                 </ul>

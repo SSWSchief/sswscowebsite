@@ -1,3 +1,4 @@
+import { DISPATCH } from "@/lib/site";
 import { NextResponse } from "next/server";
 
 type QuotePayload = {
@@ -34,9 +35,9 @@ function formatConfirmation(data: Pick<QuotePayload, "name" | "phone" | "project
         ${data.projectType ? `<p style="font-size:13px;color:#1E2328;margin:0;"><strong>Project Type:</strong> ${data.projectType}</p>` : ""}
       </div>` : ""}
       <p style="font-size:14px;color:#626367;line-height:1.6;margin:0 0 16px;">
-        For a faster response, call or text us directly:
+        For a faster response, contact dispatch directly:
       </p>
-      <a href="tel:7024600726" style="display:inline-block;background:#105499;color:#fff;padding:12px 24px;font-size:14px;font-weight:600;text-decoration:none;letter-spacing:0.05em;">(702) 460-0726</a>
+      <a href="${DISPATCH.e164 ? DISPATCH.tel : "https://sswsco.com/contact"}" style="display:inline-block;background:#105499;color:#fff;padding:12px 24px;font-size:14px;font-weight:600;text-decoration:none;letter-spacing:0.05em;">${DISPATCH.display}</a>
     </div>
     <div style="padding:16px 24px;background:#f4f7fa;border-top:1px solid #e5e7eb;">
       <p style="font-size:12px;color:#95989D;margin:0;">Silver State Waste Solutions — Serving Las Vegas, North Las Vegas &amp; Henderson</p>
@@ -81,7 +82,7 @@ function formatBody(data: QuotePayload): string {
       <table style="width:100%;border-collapse:collapse;">${tableRows}</table>
     </div>
     <div style="padding:16px 24px;background:#f4f7fa;border-top:1px solid #e5e7eb;">
-      <p style="font-size:12px;color:#95989D;margin:0;">Reply directly to this email or call/text the customer at the number above.</p>
+      <p style="font-size:12px;color:#95989D;margin:0;">Reply directly to this email or call the customer at the number above.</p>
     </div>
   </div>
 </body>

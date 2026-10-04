@@ -1,3 +1,4 @@
+import { DISPATCH } from "@/lib/site";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, Globe, Mail, MapPin } from "lucide-react";
@@ -105,11 +106,11 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="tel:7024600726"
+                  href={DISPATCH.tel}
                   className="flex items-center gap-2 text-ssws-ice text-sm hover:text-white transition-colors"
                 >
                   <Phone size={15} className="flex-shrink-0" />
-                  (702) 460-0726
+                  {DISPATCH.display}
                 </a>
               </li>
               <li>

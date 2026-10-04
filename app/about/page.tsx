@@ -1,3 +1,4 @@
+import { DISPATCH } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -57,11 +58,11 @@ export default function AboutPage() {
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a
-              href="tel:7024600726"
+              href={DISPATCH.tel}
               className="inline-flex items-center gap-2 bg-ssws-blue text-white px-8 py-4 font-heading font-semibold uppercase tracking-wide text-sm hover:bg-ssws-action transition-colors"
             >
               <Phone size={18} />
-              Call / Text Us
+              Call Now to Book
             </a>
             <Link
               href="/contact"
@@ -116,8 +117,8 @@ export default function AboutPage() {
               {/* Fleet Photo */}
               <div className="col-span-2 relative h-52 overflow-hidden">
                 <Image
-                  src="/images/trucks-on-strip.png"
-                  alt="Silver State Waste Solutions fleet trucks on the Las Vegas Strip at night"
+                  src="/images/construction-site.png"
+                  alt="Construction project in the Las Vegas area"
                   fill
                   className="object-cover object-center"
                 />
@@ -135,8 +136,8 @@ export default function AboutPage() {
               {/* Job Site Photo */}
               <div className="relative h-36 overflow-hidden">
                 <Image
-                  src="/images/dumpster-20yard.webp"
-                  alt="Silver State Waste Solutions 20 yard dumpster on job site"
+                  src="/images/home-renovation.png"
+                  alt="Home renovation project"
                   fill
                   className="object-cover object-center"
                 />

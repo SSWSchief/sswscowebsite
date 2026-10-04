@@ -1,3 +1,4 @@
+import { DISPATCH } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,7 +10,7 @@ import TrustBar from "@/components/sections/TrustBar";
 export const metadata: Metadata = {
   title: "Commercial Dumpster Rental Las Vegas | Silver State Waste Solutions",
   description:
-    "Commercial dumpster rentals for contractors, builders, property managers, and roofers in Las Vegas. Reliable service for construction, demolition, and cleanouts. Call (702) 460-0726.",
+    "Commercial dumpster rentals for contractors, builders, property managers, and roofers in Las Vegas. Reliable service for construction, demolition, and cleanouts. Contact dispatch to book.",
 };
 
 const commercialServices = [
@@ -21,7 +22,7 @@ const commercialServices = [
   {
     icon: Hammer,
     title: "Demolition",
-    desc: "Efficient removal of heavy debris from demolition projects with our lowboy and 40 yard containers.",
+    desc: "Efficient removal of demolition debris with our 20 and 40 yard containers.",
   },
   {
     icon: Wrench,
@@ -74,11 +75,11 @@ export default function CommercialPage() {
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
-                  href="tel:7024600726"
+                  href={DISPATCH.tel}
                   className="inline-flex items-center gap-2 bg-ssws-blue text-white px-8 py-4 font-heading font-semibold uppercase tracking-wide text-sm hover:bg-ssws-action transition-colors"
                 >
                   <Phone size={18} />
-                  Call / Text Us
+                  Call Now to Book
                 </a>
                 <Link
                   href="/contact"
@@ -195,7 +196,7 @@ export default function CommercialPage() {
 
       <CTABand
         headline="Ready to Get Started?"
-        subline="Fast, reliable service for your business. Call or text us today."
+        subline="Fast, reliable service for your business. Call dispatch today."
       />
     </>
   );

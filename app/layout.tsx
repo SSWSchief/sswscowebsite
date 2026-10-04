@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Silver State Waste Solutions",
   },
   description:
-    "Reliable dumpster rental and waste solutions for homeowners, contractors, and businesses across Las Vegas, North Las Vegas, and Henderson. Call or text (702) 460-0726.",
+    "Reliable dumpster rental and waste solutions for homeowners, contractors, and businesses across Las Vegas, North Las Vegas, and Henderson. Contact dispatch to book.",
   keywords: [
     "dumpster rental Las Vegas",
     "roll off dumpster Las Vegas",

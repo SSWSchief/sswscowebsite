@@ -1,41 +1,21 @@
 "use client";
 
+import { dumpsters, PRICING } from "@/lib/dumpsters";
+import { DISPATCH } from "@/lib/site";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
+const [small, large] = dumpsters;
 const faqs = [
-  {
-    q: "What's the difference between the 20 yard lowboy and the 40 yard dumpster?",
-    a: "The 20 yard lowboy is our heavy-debris specialist — low side walls (2 feet) make it easy to load concrete, dirt, asphalt, rock, and dense materials by hand. It's priced by weight, not volume. The 40 yard is our high-volume container built for large construction projects, demolition, major renovations, and commercial cleanouts where you need serious capacity. Not sure which fits your job? Give us a call.",
-  },
-  {
-    q: "What can I put in a dumpster?",
-    a: "Most construction debris, household junk, furniture, appliances, yard waste, roofing materials, wood, and general cleanout items are acceptable. Items that cannot go in: hazardous materials (paint, chemicals, oil, asbestos), tires, batteries, and electronics. Not sure about a specific item? Give us a call and we'll let you know.",
-  },
-  {
-    q: "How long is the rental period?",
-    a: "All rentals include a 7–10 day rental period. If you need the dumpster longer, contact us and we can arrange an extension for an additional daily fee.",
-  },
-  {
-    q: "Can I extend my rental?",
-    a: "Yes. If you need more time, just call or text us before your pickup date and we'll extend the rental. Extensions are billed at a daily rate. We'd rather keep you covered than rush your project.",
-  },
-  {
-    q: "What areas do you serve?",
-    a: "We serve Las Vegas, North Las Vegas, Henderson, Summerlin, Spring Valley, Enterprise, Whitney, Paradise, and surrounding areas in the Las Vegas Valley. Not sure if we cover your location? Give us a call — we'll confirm.",
-  },
-  {
-    q: "Is delivery and pickup included in the price?",
-    a: "Yes. Every rental includes one delivery and one pickup. The price we quote you covers drop-off, the rental period, and final pickup. The only variable is if you exceed the included weight limit — we'll let you know upfront if that applies to your load.",
-  },
-  {
-    q: "How much notice do you need for delivery?",
-    a: "We can typically deliver same-day or next-day depending on availability. Same-day service is available when we have open schedule slots — call or text early in the morning for the best chance. We recommend scheduling 24 hours ahead when possible.",
-  },
-  {
-    q: "Where can the dumpster be placed?",
-    a: "We can place the dumpster in your driveway, on a private property surface, or in the street if a permit is required by your municipality. Let us know the placement location when you book and we'll advise on any requirements.",
-  },
+  { q: "Which size do I need: 20 yard or 40 yard?", a: `The 20 yard ($${small.price}, ${small.rentalDays} days, ${small.includedTons} tons included) fits home cleanouts, remodels, and small jobs. The 40 yard ($${large.price}, ${large.rentalDays} days, ${large.includedTons} tons included) suits large construction, demolition, and commercial cleanouts. The 20 yard is not for concrete, dirt, rock, asphalt, or other heavy materials. Contact dispatch about materials and size before booking.` },
+  { q: "How much does a dumpster rental cost?", a: `20 yard: $${small.price}, with ${small.rentalDays} days and ${small.includedTons} tons included. 40 yard: $${large.price}, with ${large.rentalDays} days and ${large.includedTons} tons included. Delivery and pickup are included. A ${PRICING.fuelEnvironmentalPercent}% fuel/environmental fee and Clark County sales tax apply.` },
+  { q: "What can I put in a dumpster?", a: "Household junk, furniture, yard waste, wood, roofing materials, and general construction and cleanout debris are typical uses. Hazardous materials, tires, batteries, and electronics cannot go in. Contact dispatch to confirm appliances and any other material before loading. The 20 yard is not for concrete, dirt, rock, or asphalt; ask dispatch about these materials for other containers." },
+  { q: "How long is the rental period?", a: `${small.rentalDays} days for the 20 yard and ${large.rentalDays} days for the 40 yard.` },
+  { q: "Can I extend my rental?", a: `Call dispatch before your pickup date to arrange an extension. Extra days cost $${small.extraDayRate}/day for the 20 yard and $${large.extraDayRate}/day for the 40 yard.` },
+  { q: "Is delivery and pickup included in the price?", a: `Yes, one delivery and one pickup are included. Weight above the included allowance costs $${PRICING.overagePerTon}/ton. Extra days, the ${PRICING.fuelEnvironmentalPercent}% fuel/environmental fee, and sales tax also apply. Dispatch will confirm any situational charges before booking.` },
+  { q: "What areas do you serve?", a: "Las Vegas, North Las Vegas, Henderson, Summerlin, Spring Valley, Enterprise, Whitney, Paradise, and surrounding areas in the Las Vegas Valley. Contact dispatch to confirm your address." },
+  { q: "How much notice do you need for delivery?", a: "Same-day or next-day delivery may be available depending on the schedule. Call dispatch early and schedule 24 hours ahead when possible." },
+  { q: "Where can the dumpster be placed?", a: "Driveways and suitable private property surfaces are typical locations. Street placement may require a municipal permit. Tell dispatch your placement location when booking to confirm requirements." },
 ];
 
 export default function FAQ() {
@@ -49,9 +29,9 @@ export default function FAQ() {
             Frequently Asked <span className="text-ssws-blue">Questions</span>
           </h2>
           <p className="mt-3 text-ssws-steel">
-            Still have questions? Call or text us at{" "}
-            <a href="tel:7024600726" className="text-ssws-blue font-semibold hover:underline">
-              (702) 460-0726
+            Still have questions? Call dispatch at{" "}
+            <a href={DISPATCH.tel} className="text-ssws-blue font-semibold hover:underline">
+              {DISPATCH.display}
             </a>{" "}
             — we&apos;re happy to help.
           </p>

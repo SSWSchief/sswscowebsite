@@ -4,14 +4,14 @@ const steps = [
   {
     num: "1",
     icon: Phone,
-    title: "Call or Text Us",
-    desc: "Reach out by call or text to get a quick quote and pick your dumpster size.",
+    title: "Call Dispatch",
+    desc: "Reach out by call dispatch to get a quick quote and pick your dumpster size.",
   },
   {
     num: "2",
     icon: Truck,
     title: "Choose Your Size",
-    desc: "We'll help you pick the right 20 yard lowboy or 40 yard for your project.",
+    desc: "We'll help you pick the right 20 yard or 40 yard for your project.",
   },
   {
     num: "3",

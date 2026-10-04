@@ -1,23 +1,17 @@
+import { DISPATCH } from "@/lib/site";
 import Link from "next/link";
-import { Phone, MessageCircle, FileText } from "lucide-react";
+import { Phone, FileText } from "lucide-react";
 
 export default function MobileStickyBar() {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-white border-t border-gray-200 shadow-[0_-2px_12px_rgba(0,0,0,0.12)]">
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-2">
         <a
-          href="tel:7024600726"
+          href={DISPATCH.tel}
           className="flex flex-col items-center justify-center gap-1 py-3 text-ssws-blue hover:bg-ssws-mist transition-colors border-r border-gray-200"
         >
           <Phone size={20} />
-          <span className="text-xs font-semibold font-body">Call</span>
-        </a>
-        <a
-          href="sms:7024600726"
-          className="flex flex-col items-center justify-center gap-1 py-3 text-ssws-blue hover:bg-ssws-mist transition-colors border-r border-gray-200"
-        >
-          <MessageCircle size={20} />
-          <span className="text-xs font-semibold font-body">Text</span>
+          <span className="text-xs font-semibold font-body">Call to Book</span>
         </a>
         <Link
           href="/contact"
