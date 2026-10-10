@@ -59,7 +59,7 @@ export default function DumpsterSizePreview() {
                   <p className="text-xs text-ssws-steel">Extra days: ${d.extraDayRate}/day · Over {d.includedTons} tons: ${PRICING.overagePerTon}/ton.<br />Plus {PRICING.fuelEnvironmentalPercent}% fuel/environmental fee and sales tax.</p>
                 <div className="flex flex-col gap-1.5 text-ssws-steel text-sm">
                   <span className="flex items-center gap-1.5"><Truck size={14} className="text-ssws-skyline" />Delivery &amp; pickup included</span>
-                  <span className="flex items-center gap-1.5"><CalendarDays size={14} className="text-ssws-skyline" />{d.rentalDays}-day rental</span>
+                  <span className="flex items-center gap-1.5"><CalendarDays size={14} className="text-ssws-skyline" />{d.rentalDays.residential} days residential · {d.rentalDays.commercial} days commercial</span>
                   <span className="flex items-center gap-1.5"><Scale size={14} className="text-ssws-skyline" />{d.includedTons} tons included</span>
                 </div>
                 <div>

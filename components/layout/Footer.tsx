@@ -34,13 +34,13 @@ export default function Footer() {
               Proudly serving Las Vegas, North Las Vegas &amp; Henderson with reliable dumpster
               rental and waste solutions.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-1 -ml-2.5">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/SSWSCO"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="text-ssws-ice hover:text-white transition-colors"
+                aria-label="Silver State Waste Solutions on Facebook"
+                className="p-2.5 text-ssws-ice hover:text-white transition-colors"
               >
                 {/* Facebook icon */}
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -48,11 +48,11 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/silverstatewastesolutions/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="text-ssws-ice hover:text-white transition-colors"
+                aria-label="Silver State Waste Solutions on Instagram"
+                className="p-2.5 text-ssws-ice hover:text-white transition-colors"
               >
                 {/* Instagram icon */}
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

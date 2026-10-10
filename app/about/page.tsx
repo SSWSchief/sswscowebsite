@@ -112,7 +112,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Photo grid — swap divs with next/image when client photos arrive */}
+            {/* Photo grid. Team photo not yet supplied; add it as a third tile when the file is in public/images. */}
             <div className="grid grid-cols-2 gap-3">
               {/* Fleet Photo */}
               <div className="col-span-2 relative h-52 overflow-hidden">
@@ -123,18 +123,8 @@ export default function AboutPage() {
                   className="object-cover object-center"
                 />
               </div>
-              {/* Team Photo */}
-              <div className="bg-gradient-to-br from-ssws-blue to-ssws-navy h-36 flex flex-col items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)", backgroundSize: "18px 18px" }} aria-hidden />
-                <svg viewBox="0 0 40 40" width="40" fill="none" className="relative z-10 mb-2" aria-hidden>
-                  <circle cx="14" cy="12" r="6" fill="white" fillOpacity="0.2" stroke="white" strokeOpacity="0.4" strokeWidth="1.5"/>
-                  <circle cx="26" cy="12" r="6" fill="white" fillOpacity="0.2" stroke="white" strokeOpacity="0.4" strokeWidth="1.5"/>
-                  <path d="M4 34 Q4 24 14 24 Q20 24 20 24 Q20 24 26 24 Q36 24 36 34" fill="white" fillOpacity="0.12" stroke="white" strokeOpacity="0.4" strokeWidth="1.5"/>
-                </svg>
-                <span className="text-white/60 text-xs font-heading uppercase tracking-widest relative z-10">Team Photo</span>
-              </div>
               {/* Job Site Photo */}
-              <div className="relative h-36 overflow-hidden">
+              <div className="col-span-2 relative h-52 overflow-hidden">
                 <Image
                   src="/images/home-renovation.png"
                   alt="Home renovation project"

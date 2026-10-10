@@ -79,7 +79,7 @@ export default function DumpsterSizesPage() {
 
                   <div className="space-y-1.5 text-ssws-steel text-sm border-b border-gray-100 pb-4">
                     <p className="flex items-center gap-1.5"><Truck size={14} className="text-ssws-skyline" />Delivery &amp; pickup included</p>
-                    <p className="flex items-center gap-1.5"><CalendarDays size={14} className="text-ssws-skyline" />{d.rentalDays}-day rental</p>
+                    <p className="flex items-center gap-1.5"><CalendarDays size={14} className="text-ssws-skyline" />{d.rentalDays.residential} days residential · {d.rentalDays.commercial} days commercial</p>
                     <p className="flex items-center gap-1.5"><Scale size={14} className="text-ssws-skyline" />{d.includedTons} tons included</p>
                   </div>
 
